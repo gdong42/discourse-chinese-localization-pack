@@ -226,5 +226,17 @@ class OmniAuth::Strategies::Weibo < OmniAuth::Strategies::OAuth2
       end
     end
   end
+
+  protected
+  def build_access_token
+    params = {
+      'client_id' => client.id,
+      'client_secret' => client.secret,
+      'code' => request.params['code'],
+      'grant_type' => 'authorization_code',
+      'redirect_uri' => options['redirect_uri']
+    }.merge(token_params.to_hash(symbolize_keys: true))
+    client.get_token(params, deep_symbolize(options.auth_token_params))
+  end
 end
 
