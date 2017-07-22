@@ -236,6 +236,7 @@ class OmniAuth::Strategies::Weibo < OmniAuth::Strategies::OAuth2
       'grant_type' => 'authorization_code',
       'redirect_uri' => options['redirect_uri']
     }.merge(token_params.to_hash(symbolize_keys: true))
+    Rails.logger.info "#{params}"
     client.get_token(params, deep_symbolize(options.auth_token_params))
   end
 end
