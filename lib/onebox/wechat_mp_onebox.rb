@@ -74,10 +74,12 @@ module Onebox
   </div>
   <div style=\"clear: both\"></div>
 </aside>"
-    end
+      
+      end
 
-    def placeholder_html
-      to_html
+      def placeholder_html
+        to_html
+      end
     end
   end
 end
