@@ -2,7 +2,6 @@ module Onebox
   module Engine
     class WechatMpOnebox
       include Engine
-      include LayoutSupport
       include HTML
 
       always_https
@@ -55,6 +54,30 @@ module Onebox
 
         result
       end
+
+      def to_html
+        link = data['link']
+        title = data['title']
+        description = data['description']
+        by_info = data['by_info']
+        "
+<aside class=\"onebox wechatmp\">
+  <header class=\"source\">
+    <a href=\"#{link}\" target='_blank'>mp.weixin.qq.com</a>
+  </header>
+  <article class=\"onebox-body\">
+    <h3><a href='#{link}' target='_blank'>#{title}</a></h3>
+    <b>#{by_info}</b>
+    <p>#{description}</p>
+  </article>
+  <div class=\"onebox-metadata\">
+  </div>
+  <div style=\"clear: both\"></div>
+</aside>"
+    end
+
+    def placeholder_html
+      to_html
     end
   end
 end
