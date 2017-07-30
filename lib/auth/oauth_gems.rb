@@ -105,7 +105,7 @@ class OmniAuth::Strategies::Qq < OmniAuth::Strategies::OAuth2
         :oauth_consumer_key => options[:client_id],
         :access_token => access_token.token
       }, :parse => :json).parsed
-      puts res
+      logger.info res
       res
     end
   end

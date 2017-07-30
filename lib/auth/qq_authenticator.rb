@@ -6,7 +6,7 @@ class QQAuthenticator < ::Auth::Authenticator
   end
 
   def after_authenticate(auth_token)
-    puts auth_token
+    logger.info auth_token
     result = Auth::Result.new
 
     data = auth_token[:info]
