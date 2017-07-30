@@ -99,12 +99,13 @@ class OmniAuth::Strategies::Qq < OmniAuth::Strategies::OAuth2
     @raw_info ||= begin
                     #TODO handle error case
                     #TODO make info request url configurable
-      client.request(:get, "https://graph.qq.com/user/get_user_info", :params => {
+      res = client.request(:get, "https://graph.qq.com/user/get_user_info", :params => {
         :format => :json,
         :openid => uid,
         :oauth_consumer_key => options[:client_id],
         :access_token => access_token.token
       }, :parse => :json).parsed
+      puts res
     end
   end
 end
