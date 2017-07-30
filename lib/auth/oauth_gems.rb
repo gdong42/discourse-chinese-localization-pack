@@ -106,6 +106,7 @@ class OmniAuth::Strategies::Qq < OmniAuth::Strategies::OAuth2
         :access_token => access_token.token
       }, :parse => :json).parsed
       puts res
+      res
     end
   end
 end
